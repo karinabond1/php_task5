@@ -1,5 +1,6 @@
 <?php
 include_once 'iWorkData.php';
+
 class Json implements iWorkData
 {
     private $json;
@@ -11,23 +12,23 @@ class Json implements iWorkData
 
     public function saveData($key, $val)
     {
-        foreach($this->json as $key2=>$value){
-            $this->json[$key] = $val;
-        }
+        $this->json[$key] = $val;
     }
+
     public function getData($key)
     {
         foreach($this->json as $key2=>$value){
             if($key2==$key){
-                return $value;
+                return json_encode($value);
             }
         }
     }
+
     public function deleteData($key)
     {
-        foreach($this->json as $key2=>$value){
-            if($key2==$key){
-                unset($value);
+        foreach ($this->json as $key2 => $value) {
+            if ($key2 == $key) {
+                unset($this->json[$key2]);
             }
         }
     }

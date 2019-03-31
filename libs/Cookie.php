@@ -11,9 +11,7 @@ class Cookie implements iWorkData
 
     public function saveData($key, $val)
     {
-        foreach($this->cookie as $key2=>$value){
-            $this->cookie[$key] = $val;
-        }
+        $this->cookie[$key] = $val;
     }
     public function getData($key)
     {
@@ -27,7 +25,7 @@ class Cookie implements iWorkData
     {
         foreach($this->cookie as $key2=>$value){
             if($key2==$key){
-                unset($value);
+                unset($this->cookie[$key2]);
             }
         }
     }

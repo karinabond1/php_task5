@@ -11,24 +11,45 @@ class Ini implements iWorkData
 
     public function saveData($key, $val)
     {
-        foreach($this->ini as $key2=>$value){
-            $this->ini[$key] = $val;
-        }
+        //print_r($val);
+        //echo $key."\n".implode('-',$val);
+        file_put_contents(INI_FILE,$key."\n".implode(' = ',$val)."\n",FILE_APPEND | LOCK_EX);
     }
     public function getData($key)
     {
-        foreach($this->ini as $key2=>$value){
+        $arr = parse_ini_file(INI_FILE,true);
+        foreach($arr as $key2=>$value){
+           // echo $key;
+            //print_r($value);
             if($key2==$key){
-                return $value;
+                foreach ($value as $key3=>$value3){
+                    return $key3.' = '.$value3;
+                }
+
             }
         }
     }
     public function deleteData($key)
     {
-        foreach($this->ini as $key2=>$value){
+        $arr = parse_ini_file(INI_FILE,true);
+        //print_r($arr);
+        foreach($arr as $key2=>$value){
+            // echo $key;
+            //print_r($value);
             if($key2==$key){
-                unset($value);
+                unset($arr[$key2]);
+//                foreach ($value as $key3=>$value3){
+//                    return $key3.' = '.$value3;
+//                }
+
             }
         }
+        foreach ($arr as $key2=>$value2){
+            foreach ($value2 as $key3=>$value3) {
+                file_put_contents(INI_FILE,'['.$key2.']'."\n".$key3.' = '.$value3."\n");
+            }
+
+        }
+
     }
 }

@@ -13,13 +13,11 @@ class Session implements iWorkData
 
     public function saveData($key, $val)
     {
-        //foreach($this->session as $key2=>$value){
             $this->session[$key] = $val;
-        //}
     }
     public function getData($key)
     {
-        foreach($this->session as $value){
+        foreach($this->session as $key2=>$value){
             if($key2==$key){
                 return $value;
             }
@@ -29,7 +27,7 @@ class Session implements iWorkData
     {
         foreach($this->session as $key2=>$value){
             if($key2==$key){
-                unset($value);
+                unset($this->session[$key2]);
             }
         }
     }

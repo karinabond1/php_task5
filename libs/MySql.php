@@ -11,23 +11,23 @@ class MySql implements iWorkData
 
     public function saveData($key, $val)
     {
-        foreach($this->mysql as $key2=>$value){
-            $this->mysql[$key] = $val;
-        }
+        $this->mysql[$key] = $val;
     }
     public function getData($key)
     {
-        foreach($this->mysql as $key2=>$value){
-            if($key2==$key){
-                return $value;
+        $str = "";
+        foreach($this->mysql as $key1=>$value){
+            if($key1==$key){
+                $str = implode(' - ',$value);
             }
         }
+        return $str;
     }
     public function deleteData($key)
     {
         foreach($this->mysql as $key2=>$value){
             if($key2==$key){
-                unset($value);
+                unset($this->mysql[$key2]);
             }
         }
     }
