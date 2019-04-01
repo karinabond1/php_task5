@@ -6,7 +6,11 @@ class Ini implements iWorkData
 
     function __constract()
     {
-        $this->ini = array();
+        if($this->ini = array()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function saveData($key, $val)

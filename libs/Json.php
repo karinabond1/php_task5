@@ -7,7 +7,11 @@ class Json implements iWorkData
 
     function __constract()
     {
-        $this->json = array();
+        if($this->json = array()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function saveData($key, $val)

@@ -6,7 +6,11 @@ class MySql implements iWorkData
 
     function __constract()
     {
-        $this->mysql = array();
+        if($this->mysql = array()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public function saveData($key, $val)

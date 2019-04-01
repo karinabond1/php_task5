@@ -13,7 +13,11 @@ class Session implements iWorkData
 
     public function saveData($key, $val)
     {
-            $this->session[$key] = $val;
+            if($this->session[$key] = $val){
+                return true;
+            }else{
+                return false;
+            }
     }
     public function getData($key)
     {

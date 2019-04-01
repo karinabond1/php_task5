@@ -11,7 +11,11 @@ class Cookie implements iWorkData
 
     public function saveData($key, $val)
     {
-        $this->cookie[$key] = $val;
+        if($this->cookie[$key] = $val){
+            return true;
+        }else{
+            return false;
+        }
     }
     public function getData($key)
     {

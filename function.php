@@ -4,7 +4,11 @@ include_once 'libs/iWorkData.php';
 
 function saveData(iWorkData $obj, $key, $val)
 {
-    $obj->saveData($key, $val);
+    if($obj->saveData($key, $val)){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 function getData(iWorkData $obj, $key)
@@ -15,7 +19,11 @@ function getData(iWorkData $obj, $key)
 
 function deleteData(iWorkData $obj, $key)
 {
-    $obj->deleteData($key);
+    if($obj->deleteData($key)){
+        return true;
+    }else{
+        return false;
+    }
 }
 
 
